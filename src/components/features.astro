@@ -1,0 +1,71 @@
+---
+// @ts-ignore
+import { Icon } from "astro-icon/components";
+
+const features = [
+  {
+    title: "Seamless Integration Across Platforms",
+    description:
+      "Whether you’re using legacy systems or modern frameworks, our softwares integrate effortlessly. Build workflows with your preferred tools—React, Svelte, Vue, Preact, web components, or even plain HTML + JavaScript—and let us handle the rest. ",
+    icon: "bx:bxs-briefcase",
+  },
+  {
+    title: "100% Reliable Performance",
+    description:
+      "Our Softwares ensure lightning-fast performance by delivering static, optimized outputs for every process. By default, we eliminate unnecessary overhead, ensuring your system runs smoothly without compromising speed or efficiency.",
+    icon: "bx:bxs-window-alt",
+  },
+  {
+    title: "On-Demand Customization",
+    description:
+      "Need advanced functionality? Our Softwares dynamically activate features only when required, ensuring optimal resource allocation. This means you get the flexibility of customization without sacrificing performance.",
+    icon: "bx:bxs-data",
+  },
+  {
+    title: "Built for Scalability and SEO",
+    description:
+      "From automatic reporting tools to intuitive dashboards, our softwares simplifly complex processes like inventory management, payroll, and customer relationship management (CRM). Plus, it’s designed to enhance your online presence with built-in SEO tools, sitemaps, and analytics that work seamlessly out of the box.",
+    icon: "bx:bxs-bot",
+  },
+  {
+    title: "Broad Compatibility",
+    description:
+      "Our Softwares support a wide range of technologies and integrations, including TypeScript, Scoped CSS, CSS Modules, Sass, Tailwind, Markdown, MDX, and any other npm packages. Whatever your tech stack, we’ve got you covered.",
+    icon: "bx:bxs-file-find",
+  },
+  {
+    title: "Backed by a Thriving Community",
+    description:
+      "Our softwares are powered by a passionate community of developers, contributors, and industry experts who are committed to innovation. With thousands of contributions and continuous updates, you’ll always have access to the latest advancements in ERP technology.",
+    icon: "bx:bxs-user",
+  },
+];
+---
+
+<div class="mt-16 md:mt-0">
+  <h2 class="text-4xl lg:text-5xl font-bold lg:tracking-tight">
+    Everything you need to start a website
+  </h2>
+  <p class="text-lg mt-4 text-slate-600">
+    Our software comes fully equipped with all the tools you need to streamline operations, 
+    boost productivity, and drive growth. 
+    We’ve combined cutting-edge technology 
+    with innovative features to create a solution that adapts to your business needs. 
+  </p>
+</div>
+
+<div class="grid sm:grid-cols-2 md:grid-cols-3 mt-16 gap-16">
+  {
+    features.map((item) => (
+      <div class="flex gap-4 items-start">
+        <div class="mt-1 bg-black rounded-full  p-2 w-8 h-8 shrink-0">
+          <Icon class="text-white" name={item.icon} />
+        </div>
+        <div>
+          <h3 class="font-semibold text-lg">{item.title}</h3>{" "}
+          <p class="text-slate-500 mt-2 leading-relaxed">{item.description}</p>
+        </div>
+      </div>
+    ))
+  }
+</div>
