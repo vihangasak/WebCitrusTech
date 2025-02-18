@@ -1,4 +1,4 @@
----
+<!-- ---
 import { getCollection } from "astro:content";
 import { Picture } from "astro:assets";
 import Layout from "@layouts/Layout.astro";
@@ -19,9 +19,9 @@ publishedBlogEntries.sort(function (a, b) {
 <Layout title="Blog">
   <Container>
     <Sectionhead>
-      <Fragment slot="title">Our Blog</Fragment>
+      <Fragment slot="title">Project Highlights</Fragment>
       <Fragment slot="desc">
-        We write about building startups and thoughts going on our mind.
+        We write about projects done and thoughts going on our mind.
       </Fragment>
     </Sectionhead>
     <main class="mt-16">
@@ -64,6 +64,83 @@ publishedBlogEntries.sort(function (a, b) {
                   </div>
                 </div>
               </a>
+            </li>
+          ))
+        }
+      </ul>
+    </main>
+  </Container>
+</Layout>
+ -->
+ 
+ ---
+import { getCollection } from "astro:content";
+import { Picture } from "astro:assets";
+import Layout from "@layouts/Layout.astro";
+import Container from "@components/container.astro";
+import Sectionhead from "@components/sectionhead.astro";
+
+// Fetch all projects from the 'projects' collection
+const projectEntries = await getCollection("projects", ({ data }) => {
+  return !data.draft; // Only include non-draft projects
+});
+
+// Sort projects by date or any other criteria if needed
+projectEntries.sort((a, b) => {
+  return b.data.publishDate.valueOf() - a.data.publishDate.valueOf();
+});
+---
+
+<Layout title="Project Showcase">
+  <Container>
+    <Sectionhead>
+      <Fragment slot="title">Our Projects</Fragment>
+      <Fragment slot="desc">
+        A glimpse into the innovative projects we've developed.
+      </Fragment>
+    </Sectionhead>
+    <main class="mt-16">
+      <ul class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
+        {
+          projectEntries.map((project) => (
+            <li class="bg-white rounded-lg overflow-hidden transition-all duration-300 hover:shadow-lg hover:scale-105">
+              <!-- Image -->
+              <div class="w-full h-48 object-cover object-center">
+                <Picture
+                  src={project.data.image.src}
+                  alt={project.data.image.alt}
+                  width={400}
+                  height={300}
+                  class="w-full h-full object-cover object-center"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+              <!-- Content -->
+              <div class="p-6">
+                <!-- Category -->
+                <span class="text-sm font-medium text-grey-400 uppercase">
+                  {project.data.category}
+                </span>
+                <!-- Title -->
+                <h3 class="text-xl font-semibold mt-2">
+                  {project.data.title}
+                </h3>
+                <!-- Description -->
+                <p class="text-gray-600 mt-2 line-clamp-3">
+                  {project.data.description}
+                </p>
+                <!-- Tags -->
+                <div class="flex flex-wrap gap-2 mt-4">
+                  {
+                    project.data.tags.map((tag) => (
+                      <span class="text-xs bg-gray-200 text-gray-700 px-2 py-1 rounded-full">
+                        {tag}
+                      </span>
+                    ))
+                  }
+                </div>
+              </div>
             </li>
           ))
         }
