@@ -8,7 +8,7 @@ image:
 category: "Web Application"
 tags: ["Angular", "Tailwind", "HTML/SCSS", "Render"]
 draft: false
-publishDate: "2023-10-01"
+publishDate: ""
 ---
 
 This is the full description of the project, which won't be shown in the showcase but can be used elsewhere if needed.

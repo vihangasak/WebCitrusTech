@@ -7,7 +7,7 @@ image:
 category: "Web Application"
 tags: ["Angular", ".NET", "TSQL", "Azure"]
 draft: false
-publishDate: "2023-10-01"
+publishDate: ""
 ---
 
 This is the full description of the project, which won't be shown in the showcase but can be used elsewhere if needed.
