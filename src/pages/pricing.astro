@@ -6,75 +6,145 @@ import PricingCard from "@components/pricing.astro";
 
 const pricing = [
   {
-    name: "Personal",
-    price: "Free",
+    name: "Starter Plan",
+    price: "$29/Mo",
     popular: false,
     features: [
-      "Lifetime free",
-      "Up to 3 users",
-      "Unlimited Pages",
-      "Astro Sub domain",
-      "Basic Integrations",
-      "Community Support",
+      "Up to 5 Users",
+      "Core ERP Modules (Finance, Inventory, Sales)",
+      "Basic Reporting & Analytics",
+      "Email/Phone Support",
+      "Automatic Backups",
+      "1GB Storage",
     ],
+    bestFor: "Small teams or startups looking for essential ERP functionality without breaking the bank.",
     button: {
       text: "Get Started",
       link: "/",
     },
   },
   {
-    name: "Startup",
-    price: {
-      monthly: "$19",
-      annual: "$16",
-      discount: "10%",
-      original: "$24",
-    },
+    name: "Professional Plan",
+    price: "$49/Mo",
     popular: true,
     features: [
-      "All Free Features",
+      "All Starter Features +",
       "Up to 20 users",
-      "20 Custom domains",
-      "Unlimited Collaborators",
-      "Advanced Integrations",
-      "Priority Support",
+      "Advanced Reporting & Dashboards",
+      "CRM Integration",
+      "Priority Email & Phone Support",
+      "10GB Storage",
     ],
+    bestFor: "Mid-sized businesses that require more robust tools and flexibility as they grow.",
     button: {
       text: "Get Started",
       link: "#",
     },
   },
   {
-    name: "Enterprise",
-    price: "Custom",
+    name: "Enterprise Plan",
+    price: "Custom/Mo",
     popular: false,
     features: [
-      "All Pro Features",
-      "Unlimited Custom domains",
-      "99.99% Uptime SLA",
-      "SAML & SSO Integration",
-      "Dedicated Account Manager",
-      "24/7 Phone Support",
+      "All Professional Features +",
+      "Unlimited Users",
+      "API Access for Custom Integrations",
+      "Advanced Security & Compliance Tools",
+      "On-Premise or Cloud Deployment Options",
+      "Unlimited Storage",
     ],
+    bestFor: "Large enterprises with mission-critical operations requiring maximum customization and support.",
     button: {
       text: "Contact us",
       link: "/contact",
     },
   },
 ];
----
 
+// Add-ons data
+const addons = [
+  {
+    name: "Additional User License",
+    price: "$7/Mo",
+    description: "Add extra users to your plan beyond the included limit.",
+  },
+  {
+    name: "Advanced Reporting Suite",
+    price: "$25/Mo",
+    description: "Unlock advanced analytics and custom reporting tools. Integrated with AI",
+  },
+  {
+    name: "Priority Support",
+    price: "$15/Mo",
+    description: "Get 24/7 priority support with a installed TeamViewer support team.",
+  },
+  {
+    name: "Custom API Integration",
+    price: "$35/Mo",
+    description: "Integrate third-party tools and services with our ERP system.",
+  },
+];
+---
 <Layout title="Pricing">
   <Container>
+    <!-- Pricing Section -->
     <Sectionhead>
       <Fragment slot="title">Pricing</Fragment>
       <Fragment slot="desc">
         Simple & Predictable pricing. No Surprises.
       </Fragment>
+      <Fragment slot="desc">
+        Affect the current USD rates
+      </Fragment>
     </Sectionhead>
-
     <div class="grid md:grid-cols-3 gap-10 mx-auto max-w-screen-lg mt-12">
-      {pricing.map((item) => <PricingCard plan={item} />)}
+      {pricing.map((item) => (
+        <PricingCard plan={item} />
+      ))}
+    </div>
+
+    <!-- One-Time Setup Fee Note -->
+    <div class="text-center mt-6 text-sm text-gray-600">
+      * All plans include a one-time setup fee of $99.
+    </div>
+
+    <!-- Why Choose Us Section -->
+    <Sectionhead class="mt-20">
+      <Fragment slot="title">Why Choose Us?</Fragment>
+      <Fragment slot="desc">
+        We’re committed to providing you with the best ERP solutions tailored to your business needs.
+      </Fragment>
+    </Sectionhead>
+    <div class="grid md:grid-cols-3 gap-8 mt-8">
+      <div class="text-center">
+        <h3 class="text-xl font-bold">Transparent Pricing</h3>
+        <p class="mt-2 text-gray-600">No hidden fees or surprises. Our pricing is simple and predictable.</p>
+      </div>
+      <div class="text-center">
+        <h3 class="text-xl font-bold">Scalable Solutions</h3>
+        <p class="mt-2 text-gray-600">Upgrade or downgrade anytime based on your business needs.</p>
+      </div>
+      <div class="text-center">
+        <h3 class="text-xl font-bold">Dedicated Support</h3>
+        <p class="mt-2 text-gray-600">Our team is here to help you succeed at every step.</p>
+      </div>
+    </div>
+
+    <!-- Add-ons Section -->
+    <Sectionhead class="mt-20">
+      <Fragment slot="title">Add-ons</Fragment>
+      <Fragment slot="desc">
+        Enhance your ERP experience with our optional add-ons.
+      </Fragment>
+    </Sectionhead>
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mt-8">
+      {addons.map((addon) => (
+        <div class="border rounded-lg p-6 text-center hover:shadow-lg transition-shadow">
+          <h4 class="text-lg font-bold">{addon.name}</h4>
+          <p class="mt-2 text-gray-600">{addon.description}</p>
+          <p class="mt-4 text-xl font-bold text-black-600">{addon.price}</p>
+        </div>
+      ))}
     </div>
   </Container>
 </Layout>
