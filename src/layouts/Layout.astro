@@ -20,9 +20,7 @@ const resolvedImageWithDomain = new URL(
 
 const { title } = Astro.props;
 
-const makeTitle = title
-  ? title + " | " + "Citrus"
-  : "Citrus Tech - Best ERP Tech Team In Town";
+const makeTitle = "Citrus Tech - Best ERP Tech Team In Town";
 ---
 
 <!DOCTYPE html>
@@ -30,13 +28,13 @@ const makeTitle = title
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="/FavIcon.png" />
     <meta name="generator" content={Astro.generator} />
 
     <!-- <link rel="preload" as="image" href={src} alt="Hero" /> -->
     <SEO
       title={makeTitle}
-      description="Astroship is a starter website template for Astro built with TailwindCSS."
+      description="Empower Your Business with Smarter ERP Solutions"
       canonical={canonicalURL}
       twitter={{
         creator: "@surjithctly",
@@ -47,11 +45,11 @@ const makeTitle = title
         basic: {
           url: canonicalURL,
           type: "website",
-          title: `Astroship - Starter Template for Astro`,
+          title: `Citrus Tech - Best ERP Tech Team In Town`,
           image: resolvedImageWithDomain,
         },
         image: {
-          alt: "Astroship Homepage Screenshot",
+          alt: "Citrus Homepage Screenshot",
         },
       }}
     />
